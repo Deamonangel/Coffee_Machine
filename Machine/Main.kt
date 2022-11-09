@@ -1,24 +1,32 @@
 package Machine
 
+
 class CoffeeMachine(
     var water: Int = 200,
     var milk: Int = 50,
     var coffeeBeans: Int = 15,
     var cups: Int = 1,
 ) {
-    enum class CoffeeType(
-        val water: Int,
-        val milk: Int,
-        val coffeeBeans: Int,
-        val cups: Int,
-    )
-
-    private fun areResourcesEnoughFor(coffeeType: CoffeeType): Boolean =
-        water >= coffeeType.water && milk >= coffeeType.milk && coffeeBeans >= coffeeType.coffeeBeans && cups >= coffeeType.cups
 
     fun showResources() {
+        println("Write how many ml of water the coffee machine has:")
+        water = readln().toInt()
+        println("Write how many ml of milk the coffee machine has:")
+        milk = readln().toInt()
+        println("Write how many grams of coffee beans the coffee machine has:")
+        coffeeBeans = readln().toInt()
+        println("Write how many cups of coffee you will need:")
+        cups = readln().toInt()
 
+        val maxCups = minOf((water/200), (milk/50), (coffeeBeans/15))
+
+        when {
+            maxCups > cups -> println("Yes, I can make that amount of coffee (and even ${maxCups - cups} more than that)")
+            maxCups < cups -> println("No, I can make only $maxCups cups of coffee")
+            else -> println("Yes, I can make that amount of coffee")
+        }
     }
+
 
     //region Step
     //Starting Point
@@ -61,9 +69,31 @@ class CoffeeMachine(
         val numberOfBeans = 15 * numberOfCups
         println("$numberOfBeans g of coffee beans")
     }
+
+    private fun printStatsStep3(){
+        println("Write how many ml of water the coffee machine has:")
+        water = readln().toInt()
+        println("Write how many ml of milk the coffee machine has:")
+        milk = readln().toInt()
+        println("Write how many grams of coffee beans the coffee machine has:")
+        coffeeBeans = readln().toInt()
+        println("Write how many cups of coffee you will need:")
+        cups = readln().toInt()
+
+        val maxCups = minOf((water/200), (milk/50), (coffeeBeans/15))
+
+        when {
+            maxCups > cups -> println("Yes, I can make that amount of coffee (and even ${maxCups - cups} more than that)")
+            maxCups < cups -> println("No, I can make only $maxCups cups of coffee")
+            else -> println("Yes, I can make that amount of coffee")
+        }
+
+    }
     //endregion
 
 }
+
+
 
 fun main() {
     val coffeeMachine = CoffeeMachine()
