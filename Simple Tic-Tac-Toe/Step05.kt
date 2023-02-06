@@ -68,3 +68,97 @@ fun getString(text: String): String {
 }
 
 fun isNumber(number: String) = number.toIntOrNull() != null
+/*
+fun main() {
+    var n = 0
+    val grid = mutableListOf(
+        mutableListOf(" ", " ", " "),
+        mutableListOf(" ", " ", " "),
+        mutableListOf(" ", " ", " ")
+    )
+    val moves = listOf("X", "O")
+
+    while (true) {
+        // Print grid
+        println("---------")
+        for (row in grid) {
+            print("| ")
+            for (cell in row) {
+                print("$cell ")
+            }
+            println("|")
+        }
+        println("---------")
+
+        val player = moves[n % 2]
+
+        // Check for a winner
+        if (checkWin(grid, player)) {
+            println("$player wins")
+            break
+        }
+
+        // Check for a draw
+        if (n == 9) {
+            println("Draw")
+            break
+        }
+
+        // Prompt for move
+        print("Enter the coordinates: ")
+        val input = readLine()
+        val x: Int
+        val y: Int
+        try {
+            val parts = input!!.split(" ")
+            x = parts[0].toInt()
+            y = parts[1].toInt()
+        } catch (e: Exception) {
+            println("You should enter numbers!")
+            continue
+        }
+
+        // Validate move
+        if (x < 1 || x > 3 || y < 1 || y > 3) {
+            println("Coordinates should be from 1 to 3!")
+            continue
+        }
+        val row = 3 - y
+        val col = x - 1
+        if (grid[row][col] != " ") {
+            println("This cell is occupied! Choose another one!")
+            continue
+        }
+
+        // Make move
+        grid[row][col] = player
+        n++
+    }
+}
+
+fun checkWin(grid: List<List<String>>, player: String): Boolean {
+    // Check rows
+    for (row in grid) {
+        if (row.all { it == player }) {
+            return true
+        }
+    }
+
+    // Check columns
+    for (col in 0..2) {
+        if (grid.all { it[col] == player }) {
+            return true
+        }
+    }
+
+    // Check diagonals
+    if (grid[0][0] == player && grid[1][1] == player && grid[2][2] == player) {
+        return true
+    }
+    if (grid[0][2] == player && grid[1][1] == player && grid[2][0] == player) {
+        return true
+    }
+
+    return false
+}
+*/
